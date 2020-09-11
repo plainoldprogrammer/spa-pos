@@ -10,6 +10,7 @@ export class FetchData extends Component {
 
   componentDidMount() {
     this.populateWeatherData();
+    this.greeting();
   }
 
   static renderForecastsTable(forecasts) {
@@ -55,5 +56,11 @@ export class FetchData extends Component {
     const response = await fetch('weatherforecast');
     const data = await response.json();
     this.setState({ forecasts: data, loading: false });
+  }
+
+  async greeting() {
+    const response = await fetch('api/hello');
+    const data = await response.json();
+    console.log(data);
   }
 }
